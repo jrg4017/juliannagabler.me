@@ -1,0 +1,21 @@
+{% macro grid(itemArray, enableText) %}
+    <div class="row projects">
+        {% for item in itemArray %}
+            <div class="col-sm-4 col-md-4">
+                <img src="{{ item.image.src }}" alt="{{ item.image.alt }}" id="{{ item.id }}"/>
+                {% if enableText %}
+                    <label for="{{ item.id }}">{{ item.name }}</label>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro chronologicalList(itemArray) %}
+    {% for item in itemArray %}
+        <h3>{{ item.jobTitle }} | <span class="company">{{ item.company }}</span></h3>
+        <p>{{ item.description }}</p>
+        <p>{{ item.project|default("") }}</p>
+    {% endfor %}
+{% endmacro %}
+
