@@ -1,0 +1,28 @@
+{
+  "name": "julianna-gabler-portofolio",
+  "version": "2.0.0",
+  "description": "Julianna Gabler's little space on the internet",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jrg4017/juliannagabler.me.git"
+  },
+  "dependencies": {
+    "bower": "",
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "~0.6.0",
+    "grunt-contrib-less": "~0.11.4",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-uglify": "~2.0.0",
+    "grunt-sass": "^1.1.0",
+    "jshint-stylish": "~1.0.0",
+    "load-grunt-config": "~0.13.1",
+    "time-grunt": "~1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13"
+  }
+}

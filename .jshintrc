@@ -1,0 +1,19 @@
+{
+  "camelcase": false,
+  "indent": 2,
+  "undef": true,
+  "quotmark": "single",
+  "maxlen": 120,
+  "trailing": true,
+  "curly": true,
+  "jquery": true,
+  "browser": true,
+  "globals": {
+    "App": true,
+    "AppBundle": true,
+    "twig": true,
+    "Twig": true,
+    "Backbone": false,
+    "_": false
+  }
+}

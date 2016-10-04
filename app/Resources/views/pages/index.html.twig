@@ -4,6 +4,10 @@
 {% block title %}Portfolio{% endblock %}
 
 {# index / portofolio specific javascript #}
+
+{% block stylesheets %}
+    <link href="{{ asset('') }}
+{% endblock %}
 {% block javascript %}
 
 {% endblock %}
@@ -14,7 +18,7 @@
         Interned with <a href="www.datto.com">Datto</a>, previous <a href="http://etransfr.com">Etransfr</a> employees,
         plays rugby, and organizes with <a href="www.wic.rit.edu">Women in Computing</a>.  </p>
 
-    {# insert dashed line here, drawn style ?? #}
+     insert dashed line here, drawn style ??
 
     <h2>projects</h2>
     {{ grid.grid(projects, true) }}
@@ -28,3 +32,4 @@
     <h2>tools & frameworks</h2>
     {{ grid.grid(toolsFrameworks) }}
 {% endblock %}
+
