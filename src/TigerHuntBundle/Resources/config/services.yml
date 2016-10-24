@@ -1,0 +1,12 @@
+services:
+  tiger_hunt.user_service:
+    class: TigerHuntBundle\Services\UserService
+
+  tiger_hunt.task_lists_service:
+    class: TigerHuntBundle\Services\TaskListService
+
+  tiger_hunt.task_list_controller:
+    class: TigerHuntBundle\Controller\TaskListController
+    arguments:
+      - "@tiger_hunt.user_service"
+      - "@tiger_hunt.task_list_service"
