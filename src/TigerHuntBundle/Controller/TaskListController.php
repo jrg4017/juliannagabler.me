@@ -2,6 +2,9 @@
 
 namespace TigerHuntBundle\Controller;
 
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use TigerHuntBundle\Services\TaskListService;
 use TigerHuntBundle\Services\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,6 +38,7 @@ class TaskListController extends AbstractController
 
     /**
      * @param Request $request
+     * @return JsonResponse
      */
     public function getTaskListAction(Request $request)
     {
@@ -46,7 +50,28 @@ class TaskListController extends AbstractController
         $userID = $requestBody['userID'];
         $token = $requestBody['token'];
 
-        $this->userService->validateUser($userID, $token);
+        try {
+            //validate user and get task list
+            $this->userValidation($userID, $token);
+            $taskList = $this->taskListService->fetchTaskList();
+
+            $response = array('success' => true, 'taskList' => $taskList);
+            $httpStatusCode = 200;
+        } catch (AccessDeniedException $ae) {
+            $response = array('success' => false, 'error' => "User was invalid or not found");
+            $httpStatusCode = 500;
+
+            //TODO implement logging (monolog logger)
+            error_log($ae->getMessage());
+        } catch (Exception $e) {
+            $response = array('success' => false, 'error' => "An unexpected error occurred");
+            $httpStatusCode = 500;
+
+            //TODO implement logging (monolog logger)
+            error_log($e->getMessage());
+        }
+
+        return new JsonResponse(json_encode($response), $httpStatusCode);
     }
 
     /**
@@ -55,5 +80,16 @@ class TaskListController extends AbstractController
     public function submitTaskItemAction(Request $request)
     {
 
+    }
+
+    /**
+     * @param int $userID
+     * @param string $token
+     * @throws AccessDeniedException
+     */
+    private function userValidation($userID, $token) {
+        $this->userService->validateUser($userID);
+
+        //$this->tokenValidationService->isValidToken($token);
     }
 }

@@ -1,16 +1,18 @@
 <?php
 
-namespace AppBundle\Model\Entity\TigerHunt\Users;
-
+namespace TigerHuntBundle\Model\Entity\User;
 
 /**
  * Class User
- * @package AppBundle\Model\Entity\TigerHunt\Users
+ * @package TigerHuntBundle\Model\Entity\User
  */
 class User
 {
     /** @var integer */
     private $userID;
+
+    /** @var Team */
+    private $team;
 
     /** @var string */
     private $username;
@@ -28,7 +30,7 @@ class User
     private $imageURL;
 
     /** @var bool */
-    private $active;
+    private $isActive;
 
     /**
      * @return int
@@ -36,6 +38,25 @@ class User
     public function getUserID()
     {
         return $this->userID;
+    }
+
+    /**
+     * @return Team
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    /**
+     * @param Team $team
+     * @return User
+     */
+    public function setTeam($team)
+    {
+        $this->team = $team;
+
+        return $this;
     }
 
     /**
@@ -53,6 +74,7 @@ class User
     public function setUsername($username)
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -71,6 +93,7 @@ class User
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -89,6 +112,7 @@ class User
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
@@ -107,6 +131,7 @@ class User
     public function setJoinDate($joinDate)
     {
         $this->joinDate = $joinDate;
+
         return $this;
     }
 
@@ -125,6 +150,7 @@ class User
     public function setImageURL($imageURL)
     {
         $this->imageURL = $imageURL;
+
         return $this;
     }
 
@@ -133,16 +159,17 @@ class User
      */
     public function isActive()
     {
-        return $this->active;
+        return $this->isActive;
     }
 
     /**
-     * @param boolean $active
+     * @param boolean $isActive
      * @return User
      */
-    public function setActive($active)
+    public function setIsActive($isActive)
     {
-        $this->active = $active;
+        $this->isActive = $isActive;
+
         return $this;
     }
 }
