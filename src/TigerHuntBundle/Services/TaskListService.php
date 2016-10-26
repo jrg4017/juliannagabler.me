@@ -4,7 +4,7 @@ namespace TigerHuntBundle\Services;
 
 use Symfony\Component\Config\Definition\Exception\Exception;
 use TigerHuntBundle\Model\Entity\Task\Task;
-use TigerHuntBundle\Model\Repository\Task\TaskRepository;
+use TigerHuntBundle\Model\Repository\Task\TaskRepositoryInterface;
 
 /**
  * Class TaskListService
@@ -12,15 +12,15 @@ use TigerHuntBundle\Model\Repository\Task\TaskRepository;
  */
 class TaskListService
 {
-    /** @var  TaskRepository */
+    /** @var  TaskRepositoryInterface */
     protected $taskRepository;
 
     /**
      * TaskListService constructor.
-     * @param TaskRepository $taskRepository
+     * @param TaskRepositoryInterface $taskRepository
      */
     public function __construct(
-        TaskRepository $taskRepository
+        TaskRepositoryInterface $taskRepository
     )
     {
         $this->taskRepository = $taskRepository;

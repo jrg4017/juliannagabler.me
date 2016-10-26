@@ -2,6 +2,7 @@
 
 namespace TigerHuntBundle\Controller;
 
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +13,19 @@ use Symfony\Component\HttpFoundation\Request;
  */
 abstract class AbstractController extends Controller
 {
+    /** Errors reported back to user */
+    const GENERIC_ERROR = "An unexpected error occurred. Please try again";
+    const INVALID_USER_ERROR = "User was invalid or not found";
+
+    /** @var LoggerInterface */
+    protected $logger;
+
+    /**
+     * @param LoggerInterface $logger
+     */
+    public function setLogger(LoggerInterface $logger) {
+        $this->logger = $logger;
+    }
 
     /**
      * @param Request $request
@@ -22,15 +36,5 @@ abstract class AbstractController extends Controller
         if ($request->getMethod() !== 'POST') {
             throw new AccessDeniedException('Could not complete action due to incorrect request type.');
         }
-    }
-
-    /**
-     * @param string $message
-     * @param \Exception|null $previous
-     * @return AccessDeniedException
-     */
-    public function createAccessDeniedException($message = 'Access denied.', \Exception $previous = null)
-    {
-        return new AccessDeniedException($message, $previous);
     }
 }

@@ -5,18 +5,18 @@ namespace TigerHuntBundle\Services;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use TigerHuntBundle\Model\Entity\User\User;
-use TigerHuntBundle\Model\Repository\User\UserRepository;
+use TigerHuntBundle\Model\Repository\User\UserRepositoryInterface;
 
 class UserService
 {
-    /** @var UserRepository */
+    /** @var UserRepositoryInterface */
     protected $userRepository;
 
     /**
      * UserService constructor.
-     * @param UserRepository $userRepository
+     * @param UserRepositoryInterface $userRepository
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }

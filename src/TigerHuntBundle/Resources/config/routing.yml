@@ -1,13 +1,13 @@
-#tiger_hunt_homepage:
-#    path:     /
-#    defaults: { _controller: TigerHuntBundle:Default:index }
-
 get_task_list:
   path: /tasks
   defaults: { _controller: TigerHuntBundle:TaskList:getTaskList}
-  methods: [POST]
+  methods: [GET]
 
 submit_task_list:
   path: /tasks/submit
   defaults: { _controller: TigerHuntBundle:TaskList:submitTaskItem }
   methods: [POST]
+
+view_api_calls:
+  path: /api-documentation
+  defaults: {_controller: TigerHuntBundle:API:index }

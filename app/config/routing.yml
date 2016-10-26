@@ -1,7 +1,9 @@
 tiger_hunt:
     resource: "@TigerHuntBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /tiger-hunt/
+    # NOTE: change in the APIController for accurate prefix reporting
 
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
