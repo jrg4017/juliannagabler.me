@@ -1,21 +1,4 @@
 services:
-  # repository classes
-  tiger_hunt.task.task_repository:
-    class: TigerHuntBundle\Model\Repository\Task\TaskRepository
-    factory: ['@doctrine.orm.entity_manager', getRepository]
-
-  tiger_hunt.user.user_repository:
-    class: TigerHuntBundle\Model\Repository\User\UserRepository
-    factory: ['@doctrine.orm.entity_manager', getRepository]
-
-  # services
-  tiger_hunt.user_service:
-    class: TigerHuntBundle\Services\UserService
-    arguments: ["@tiger_hunt.user.user_repository"]
-
-  tiger_hunt.task_lists_service:
-    class: TigerHuntBundle\Services\TaskListService
-    arguments: ["@tiger_hunt.task.task_repository"]
 
   # controller
   tiger_hunt.abstract_controller:
@@ -24,11 +7,11 @@ services:
     calls:
       - [setLogger, ["@logger"]]
 
-  tiger_hunt.task_list_controller:
-    class: TigerHuntBundle\Controller\TaskListController
-    arguments:
-      - "@tiger_hunt.user_service"
-      - "@tiger_hunt.task_lists_service"
-
   tiger_hunt.api_controller:
     class: TigerHuntBundle\Controller\APIController
+
+# repository classes
+
+
+
+

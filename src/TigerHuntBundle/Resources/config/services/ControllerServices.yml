@@ -1,0 +1,20 @@
+services:
+#    tiger_hunt.example:
+#        class:     TigerHuntBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+#        calls:
+#            - [setService, ["@service_id"]]
+#        tags:
+#            - { name: twig.extension }
+#            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+  tiger_hunt.abstract_controller:
+    class: TigerHuntBundle\Controller\AbstractController
+    abstract: true
+    calls:
+      - [setLogger, ["@logger"]]
+
+  tiger_hunt.task_list_controller:
+    class: TigerHuntBundle\Controller\TaskListController
+    arguments:
+      - "@tiger_hunt.app.user_service"
+      - "@tiger_hunt.app.task_lists_service"

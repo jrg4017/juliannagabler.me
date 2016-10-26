@@ -60,10 +60,23 @@ class AppKernel extends Kernel
             ->files()
             ->name('*.yml')
             ->depth(0)
-            ->in(__DIR__.'/config/services/');
+            ->in(__DIR__ . '/config/services/');
 
         foreach ($iterator as $file) {
             $loader->load(__DIR__ . '/config/services/' . $file->getFilename());
+        }
+
+        $tigerHuntServicesPath = __DIR__ . '/../src/TigerHuntBundle/Resources/config/services/';
+        //do the same for TigerHuntBundle
+        $finder = new Finder();
+        $iterator = $finder
+            ->files()
+            ->name('*.yml')
+            ->depth(0)
+            ->in($tigerHuntServicesPath);
+
+        foreach ($iterator as $file) {
+            $loader->load($tigerHuntServicesPath . $file->getFilename());
         }
     }
 }

@@ -1,0 +1,8 @@
+services:
+  tiger_hunt.app.task_lists_service:
+    class: TigerHuntBundle\Services\TaskListService
+    arguments: ["@tiger_hunt.repository.task.task_repository"]
+
+  tiger_hunt.app.user_service:
+    class: TigerHuntBundle\Services\UserService
+    arguments: ["@tiger_hunt.repository.user.user_repository"]

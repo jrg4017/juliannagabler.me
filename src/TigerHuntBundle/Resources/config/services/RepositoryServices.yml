@@ -1,0 +1,16 @@
+services:
+  tiger_hunt.repository.task.task:
+    class: TigerHuntBundle\Model\Entity\Task\Task
+
+  tiger_hunt.repository.task.task_repository:
+    class: TigerHuntBundle\Model\Repository\Task\TaskRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments: ["@tiger_hunt.repository.task.task"]
+
+  tiger_hunt.repository.user.user:
+    class: TigerHuntBundle\Model\Entity\User\User
+
+  tiger_hunt.repository.user.user_repository:
+    class: TigerHuntBundle\Model\Repository\User\UserRepository
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments: ["@tiger_hunt.repository.user.user"]
