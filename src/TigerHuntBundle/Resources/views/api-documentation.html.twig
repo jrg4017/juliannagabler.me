@@ -1,11 +1,29 @@
-<h1>Tiger Hunt API Calls</h1>
 
-<h3>{{ prefix }}tasks</h3>
 
-<div>
-    <p>You will need the following in your json:</p>
-    <ul>
-        <li>Valid user ID</li>
-        <li>App Token</li>
-    </ul>
-</div>
+{% extends '::base.html.twig' %}
+
+{% block title %}Portfolio{% endblock %}
+
+{# index / portofolio specific javascript #}
+{% block javascript %}
+
+{% endblock %}
+
+{# don't forget to comment out the menu in base #}
+
+{% block body %}
+    <div class="container">
+        <h1>Tiger Hunt API Calls</h1>
+
+        <h3>{{ prefix }}tasks</h3>
+
+        <div>
+            <p>You will need the following in your json:</p>
+            <ul>
+                <li>Valid user ID</li>
+                <li>App Token</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+git
